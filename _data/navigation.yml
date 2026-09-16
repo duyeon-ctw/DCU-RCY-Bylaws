@@ -24,17 +24,20 @@
   group: 정책
 - title: 서비스 이용약관
   url: /terms/
-  group: 정책
+  group: 보충 문서·서식
 - title: 개인정보 동의서
   url: /consent/
-  group: 서식
+  group: 보충 문서·서식
 - title: 촬영·초상 이용 동의
   url: /media/
-  group: 서식
+  group: 보충 문서·서식
 - title: CCTV 운영·관리 방침
   url: /cctv/
-  group: 정책
-- title: 검토 사항·개정 이력
+  group: 보충 문서·서식
+- title: 시행일·원문 반영 기록
+  url: /publication/
+  group: 관리
+- title: 기존 검토 기록
   url: /reviews/
   group: 관리
 - title: 원문·법령 출처

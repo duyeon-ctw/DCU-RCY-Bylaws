@@ -2,40 +2,40 @@
 
 공개 문서 사이트: https://bylaws.dcu.rcy.kr/
 
-## 이번 구성
+**시행일: 2026년 9월 1일**  
+웹 문서 정리일: 2026년 9월 16일
 
-- `/bylaws/` 회칙 43개 조문과 부칙 — 첨부 제규정집 v2.2 본문 보존
-- `/finance/` 재무 24개 조문 및 제14조의2 — 원문 보존
-- `/audit/`, `/recruitment/` 감사·선발 원문
-- `/clubroom/` 기존 8조 초안과 구분된 상세 운영 부록
-- `/privacy/` 상세 개정 검토안, `/privacy/source/` 첨부 v1.1 비교용 원문
-- `/terms/`, `/consent/`, `/media/`, `/cctv/` 신규 검토안·서식
-- `/regulations/`, `/reviews/`, `/references/` 문서 관계, 검토 기록, 출처
+## 원문 기반 문서
+
+- `/bylaws/`: 첨부 제규정집 v2.2의 회칙 43조와 부칙. 사용자 지시에 따라 부칙 시행일 반영.
+- `/finance/`: 재무 규정 24조 및 제14조의2·전결표. 시행일 부칙 추가.
+- `/audit/`: 재무 감사 시행세칙 6조와 보고서 서식. 시행일 부칙 추가.
+- `/recruitment/`: 임원 선발 규정 9조와 일정표. 시행일 부칙 추가.
+- `/privacy/`: 첨부 개인정보 처리방침 v1.1의 8개 조항과 10개 업무. 학교명과 시행일 외 원문 유지.
+- `/clubroom/`: 기존 8개 조항에 시행일 반영. 상세 운영 부록은 별도 작성안.
+
+## 원문과 보완안의 구분
+
+`/privacy/source/`는 빈칸을 포함한 첨부 원문 보관본입니다. 이전 확장 검토안은 `/privacy/proposal/`로 분리했으며 원문 기반 처리방침에 합치지 않았습니다.
+
+`/terms/`, `/consent/`, `/media/`, `/cctv/`는 첨부 파일에 전문이 없는 보충 작성안입니다. 사용자 지정 시행일은 별도로 표시하며, 원문 재현본이나 의결 사실의 증명으로 취급하지 않습니다.
+
+최신 반영 내역은 `/publication/`에 기록했습니다. `/reviews/`는 시행일 반영 전에 작성한 검토 기록으로 보존했습니다. 개인정보 담당자 성명·공용 이메일과 미제공 운영 정보는 임의로 채우지 않았습니다.
+
+## 파일과 편집
+
+- 원문 조문: `_includes/bylaws.html`, `finance.html`, `audit.html`, `recruitment.html`.
+- 회칙 시행일: `bylaws/index.html`에서 원문 부칙의 날짜 문구만 명시적으로 치환.
+- 개인정보 처리방침: `privacy/index.md`.
+- 동아리방 시행일: 공통 레이아웃에서 기존 부칙의 날짜 문구만 치환.
+- 공통 날짜: `_data/publication.yml`.
+- 공통 화면: `_layouts/document.html`, `assets/site.css`, `assets/site.js`.
+- 원본 문서 및 과거 Git 커밋의 작성일을 소급 변경하지 않습니다.
 
 ## 주소와 배포
 
-GitHub Pages의 기본 Jekyll 빌드를 사용합니다. 각 폴더의 `index.html` 또는 `index.md`가 정적 HTML로 빌드되어 `.html`이 없는 폴더 주소로 표시됩니다. 별도의 서버·데이터베이스는 없습니다. `CNAME`은 기존 설정을 유지했습니다.
+기존 GitHub Pages Jekyll 구조와 `CNAME`을 유지합니다. `/bylaws/`, `/finance/`, `/privacy/` 등 폴더 주소를 사용하며, 기존 `.html` 호환 링크는 유지합니다. `main` / 루트 빌드를 사용하고 `.nojekyll`을 추가하지 않습니다.
 
-기존 `bylaws.html`, `finance.html`, `clubroom.html`은 쿼리와 문서 위치 해시를 보존하며 새 주소로 이동합니다. JavaScript를 끈 경우 이동 링크가 표시됩니다. 실제 문서 본문은 JavaScript 없이도 읽을 수 있습니다.
+로컬 빌드: `bundle install` 후 `bundle exec jekyll build`.
 
-Pages는 `main` / 루트의 기본 Jekyll 빌드를 유지해야 합니다. `.nojekyll` 파일을 추가하거나 Liquid 소스를 빌드 없이 배포하지 마세요. 기본 테마·외부 플러그인·외부 폰트·분석 SDK를 사용하지 않습니다. 저장소의 원본 코드는 공개되며, 주소 확장자 제거는 소스코드를 숨기는 보안 기능이 아닙니다.
-
-## 수정
-
-공통 틀: `_layouts/document.html`, 디자인: `assets/site.css`, 목차·테마·검색: `assets/site.js`.
-원문 조문: `_includes/bylaws.html`, `finance.html`, `audit.html`, `recruitment.html`.
-신규 문서: 각 경로의 `index.md`. 목차는 제목과 조문 헤더를 기반으로 생성합니다.
-
-로컬 확인: `bundle install` 후 `bundle exec jekyll serve`. 빌드: `bundle exec jekyll build`.
-
-## 정식 적용 전
-
-1. 원문에 미기재된 제정일·의결 정보와 상위 규정을 확인합니다.
-2. 개인정보 담당 부서·연락처, 수집 항목, 실제 서비스·수탁자·국외이전 정보를 확정합니다.
-3. CCTV 설치 권한·장소 성격·촬영 범위·보유기간·관리책임자·안내판을 확인합니다.
-4. `reviews/`의 충돌·개정 사항을 의결하고 실제 설정과 문서를 일치시킵니다.
-5. 공고·동의 절차 후 문서 상태·버전·시행일을 갱신합니다. 검색 노출 여부(`robots`)도 그때 결정합니다.
-
-회원 명단, 생년월일, 연락처, 계좌, 비밀번호, 서명한 동의서, CCTV 영상은 이 공개 저장소에 커밋하지 않습니다. 여기의 동의서는 작성용 서식이며 온라인 제출 기능이 아닙니다.
-
-원문 수록은 적법성 또는 의결 사실의 인증이 아닙니다. 신규 문서의 제안 기준과 실제 적용 기준을 구분하세요.
+이 사이트는 문서 열람용입니다. 공개 저장소에 회원 명단, 생년월일, 연락처, 계좌 내역, 서명된 동의서, CCTV 영상이나 비밀번호를 올리지 않습니다.
