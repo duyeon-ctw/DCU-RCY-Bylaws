@@ -1,7 +1,12 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.log
+.DS_Store
 _site/
+.sass-cache/
 .jekyll-cache/
 .jekyll-metadata
-.sass-cache/
-.bundle/
 vendor/
-.DS_Store

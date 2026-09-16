@@ -1,0 +1,122 @@
+name: Next.js Markdown Pages
+on:
+  push:
+    branches: [main, migrate-nextjs-markdown]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nextjs-pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    outputs:
+      content_hash: ${{ steps.manifest.outputs.content_hash }}
+      source_commit: ${{ steps.manifest.outputs.source_commit }}
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+      - name: Convert legacy documents once
+        run: npm run prepare:content
+      - name: Validate Markdown, content updates, links and sanitization
+        run: npm test
+      - name: Build Next.js static site
+        run: npm run build
+      - name: Check exported document bodies and assets
+        run: npm run verify:export
+      - name: Persist initial Markdown sources and dependency lock
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_BRANCH: ${{ github.ref_name }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          set -eu
+          case "$TARGET_BRANCH" in main|migrate-nextjs-markdown) ;; *) exit 1;; esac
+          git add content package-lock.json
+          if git diff --cached --quiet; then exit 0; fi
+          remote_sha=$(git ls-remote origin "refs/heads/$TARGET_BRANCH" | cut -f1)
+          if [ "$remote_sha" != "$EXPECTED_SHA" ]; then echo 'Branch changed during build; refusing stale write.'; exit 1; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore: initialize canonical Markdown documents and dependency lock'
+          git -c credential.helper='!f() { echo username=x-access-token; echo "password=$GH_TOKEN"; }; f' push origin "HEAD:$TARGET_BRANCH"
+          node scripts/postbuild.mjs
+          npm run verify:export
+      - name: Export verified manifest
+        id: manifest
+        run: |
+          node --input-type=module -e "import fs from 'node:fs'; const v=JSON.parse(fs.readFileSync('out/version.json')); fs.appendFileSync(process.env.GITHUB_OUTPUT,'content_hash='+v.contentHash+'\nsource_commit='+v.sourceCommit+'\n');"
+      - name: Store verified site and lock
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-verified-site
+          path: |
+            out/
+            content/
+            package-lock.json
+          include-hidden-files: true
+          retention-days: 7
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: github-pages-production
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check Pages configuration
+        uses: actions/configure-pages@v5
+      - name: Deploy verified Next.js site
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify the published content hash
+        env:
+          DEPLOYED_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_HASH: ${{ needs.build.outputs.content_hash }}
+          EXPECTED_COMMIT: ${{ needs.build.outputs.source_commit }}
+        run: |
+          node - <<'JS'
+          const base = process.env.DEPLOYED_URL;
+          if (!base || !base.startsWith('https://')) throw new Error('No HTTPS Pages URL returned.');
+          let last;
+          for (let attempt = 0; attempt < 8; attempt++) {
+            try {
+              const response = await fetch(new URL('version.json?t=' + Date.now(), base), { cache: 'no-store' });
+              if (!response.ok) throw new Error(`version.json: HTTP ${response.status}`);
+              const result = await response.json();
+              if (result.framework !== 'Next.js' || result.contentHash !== process.env.EXPECTED_HASH || result.sourceCommit !== process.env.EXPECTED_COMMIT) throw new Error('Unexpected deployed version.');
+              console.log(`Verified ${result.release}, source ${result.sourceCommit}, content ${result.contentHash}`);
+              process.exit(0);
+            } catch (error) { last = error; await new Promise(resolve => setTimeout(resolve, 5000)); }
+          }
+          throw last;
+          JS

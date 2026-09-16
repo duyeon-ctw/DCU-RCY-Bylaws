@@ -1,0 +1,22 @@
+{
+  "name": "dcu-rcy-bylaws",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "prepare:content": "node scripts/prepare-content.mjs",
+    "dev": "npm run prepare:content && next dev",
+    "build": "npm run prepare:content && next build && node scripts/postbuild.mjs",
+    "test": "npm run prepare:content && node --test tests/*.test.mjs",
+    "verify:export": "node scripts/verify-export.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "marked": "^16.0.0",
+    "sanitize-html": "^2.17.7",
+    "yaml": "^2.8.0"
+  }
+}
