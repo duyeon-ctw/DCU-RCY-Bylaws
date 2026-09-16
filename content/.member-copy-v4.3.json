@@ -1,0 +1,14 @@
+{
+  "release": "4.3.0",
+  "reviewedBase": "75f6f619c7ee30a88da502028378c9b3c0dc9d65",
+  "files": {
+    "bylaws": "44e696b7db1224929b460af6f927ec8bb08f64f92b442c84cebf462a3fc5e644",
+    "finance": "9c13bd195be80380ddea5cbe01246b090344017ff737f5ae1cc31e5201cbc339",
+    "privacy": "15fe61b841e2d228ad776f6f8c9283c941542c8c71d22f7f43f18198a09c2cd0",
+    "cctv": "8c2b67d9e1e378fe431a1e95e0f2ad087f76c08839ba246c4b5461d8e6e8ea0f",
+    "media": "bb871f8ba2349f04405ddc1272869f7d6ce6e49f0ec077e0197c5d8b23e23cbf",
+    "consent": "ddbbfa467025367f4b80001ba99b314026aaf05e97871e9a37e5640c8cf0b8b0",
+    "clubroom": "1f4fb0ae77d0d38b4567cab78f89ffaa60c1e2ae7992f85634f49defec57f48c",
+    "terms": "f3729c360fc8b55a9bcc3e2c9e3b0eac06387f45ab377f10d6c78f39be353bdf"
+  }
+}
