@@ -30,15 +30,23 @@ test('clubroom permits autonomous use and retains only the six-item exit checkli
   assert.doesNotMatch(appendix, /이용 안내표|예약과 방문객|비품 대여|사고·갈등/);
 });
 
-test('hierarchy and combined assembly clause preserve the remaining rules', () => {
+test('hierarchy retains the requested omission', () => {
   const body = getDocument(['bylaws']).body;
   const hierarchy = article(body, '### 제5조 규범의 위계', '### 제6조');
   assert.doesNotMatch(hierarchy, /총동아리연합회 회칙/);
   assert.match(hierarchy, /법령·학칙/);
-  const assembly = article(body, '### 제15조 소집', '### 제16조');
-  assert.equal((assembly.match(/^\d+\. /gm) || []).length, 2);
-  assert.doesNotMatch(assembly, /정기총회|임시총회|학기당 1회/);
-  for (const value of ['정회원 3분의 1', '회장이 14일 이내', '7일 전까지', '온라인 출석·표결']) assert.ok(assembly.includes(value), value);
+});
+
+test('assembly chapter is removed from Markdown, rendered content and outline without renumbering', () => {
+  const doc = getDocument(['bylaws']);
+  assert.doesNotMatch(doc.body, /^## 제4장 총회$/m);
+  assert.doesNotMatch(doc.html, /제4장 총회/);
+  assert.ok(!doc.toc.some(entry => entry.title === '제4장 총회' || /^제(?:14|15|16|17|18)조(?:\s|$)/.test(entry.title)));
+  const main = doc.body.split('\n## 부칙')[0];
+  assert.deepEqual(Array.from(main.matchAll(/^### 제(\d+)조 /gm), match => Number(match[1])), [...Array.from({length:13}, (_, i) => i + 1), ...Array.from({length:25}, (_, i) => i + 19)]);
+  assert.deepEqual(Array.from(main.matchAll(/^## 제(\d+)장 /gm), match => Number(match[1])), [1, 2, 3, 5, 6, 7, 8, 9]);
+  assert.match(main, /지도교수의 위촉·변경은 회장이 추진하고 임원회의에 보고한다\.\n\n## 제5장 임원/);
+  assert.equal(doc.effective_date, '2026-09-01');
 });
 
 test('bulk outline actions are labelled icon buttons next to the contents heading', () => {

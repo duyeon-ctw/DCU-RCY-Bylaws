@@ -22,7 +22,11 @@ script = r'''<script>
   await wait(2000);
   const panel = document.querySelector('.toc-panel');
   const chapters = document.querySelectorAll('.toc-chapter');
-  check(chapters.length === 10, 'Expected nine chapters and supplementary provisions');
+  check(chapters.length === 9, 'Expected eight remaining chapters and supplementary provisions');
+  check(!panel.textContent.includes('제4장 총회'), 'Removed assembly chapter remains in the outline');
+  const content = document.querySelector('#document-content');
+  check(!content.textContent.includes('제4장 총회'), 'Removed assembly chapter remains in the document');
+  check(Array.from(content.querySelectorAll('.art-n')).every(node => !/^제(?:14|15|16|17|18)조$/.test(node.textContent.trim())), 'Removed assembly articles remain in the document');
   const mobile = matchMedia('(max-width: 1023px)').matches;
   if (mobile) check(!panel.open, 'Mobile contents should initially be collapsed');
   const heading = panel.querySelector(':scope > summary');
@@ -53,7 +57,7 @@ script = r'''<script>
   check(!document.querySelector('#document-content').innerText.includes('**'), 'Literal Markdown stars remain');
   check(Array.from(document.querySelectorAll('.art-title')).every(node => !/^\s*[(（]/.test(node.textContent)), 'Article title parentheses remain');
   if (mobile) { panel.open = false; check(document.documentElement.scrollWidth <= innerWidth, 'Mobile page overflows horizontally'); }
-  finish('passed', JSON.stringify({chapters:chapters.length, mobile, theme:true, accordion:true, typography:true, headingIcons:true}));
+  finish('passed', JSON.stringify({chapters:chapters.length, mobile, theme:true, accordion:true, typography:true, headingIcons:true, assemblyRemoved:true}));
  } catch (error) { finish('failed', String(error.stack || error)); }
 })();
 </script>'''
