@@ -38,7 +38,7 @@ html{scroll-padding-top:calc(var(--head) + 24px)}
 @media print{
   :root,:root[data-theme=dark]{--bg:#fff;--paper:#fff;--surface:#fff;--ink:#111;--neutral:#222;--muted:#505050;--line:#c8c8c8;--accent:#85111c;--soft:#fff;--highlight:#f3eded;color-scheme:light}
   html,body{margin:0!important;padding:0!important;background:#fff!important;color:#111!important;scroll-padding:0}
-  .topbar,.top-navigation,.toc-panel,.sidebar,.page-outline,.floating-print,.controls,.skip,.document-actions,.footer{display:none!important}
+  .topbar,.top-navigation,.toc-panel,.sidebar,.page-outline,.floating-print,.controls,.skip,.document-actions,.workspace>.footer{display:none!important}
   .workspace,.workspace>*,.document-layout,.document-main,.reading,.prose{display:block!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important}
   .document-header{border:0;border-bottom:1.5pt solid #85111c;margin:0 0 6mm!important;padding:0 0 5mm!important;break-after:avoid-page}
   .eyebrow{font-size:8pt;letter-spacing:.08em;margin:0 0 2mm;color:#85111c}
@@ -53,7 +53,7 @@ html{scroll-padding-top:calc(var(--head) + 24px)}
   .prose h1{font-size:16pt;margin:6mm 0 3mm;padding:0;border:0;break-before:auto;break-after:avoid-page}
   .prose h2{font-size:13pt;margin:6mm 0 3mm;break-after:avoid-page}
   .prose h3,.prose h4{font-size:11pt;margin:4mm 0 2mm;break-after:avoid-page}
-  .prose .art{border:0;border-top:0.6pt solid #ccc;border-radius:0;padding:3mm 0 2mm;margin:3mm 0;break-inside:auto;box-shadow:none;background:#fff}
+  .prose .art{border:0;border-top:0.6pt solid #ccc;border-radius:0;padding:2.5mm 0 1.5mm;margin:2mm 0;break-inside:auto;box-shadow:none;background:#fff}
   .prose .art-h{font-size:11pt;line-height:1.6;margin:0 0 2mm;break-after:avoid-page;gap:2.5mm}
   .art-n{background:#fff!important;color:#85111c!important;border:0.8pt solid #85111c;border-radius:3px;font-size:8.5pt;padding:0.5mm 2mm}
   .art-title{font-size:11pt;color:#111}
