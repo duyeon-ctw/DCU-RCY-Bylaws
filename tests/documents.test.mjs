@@ -43,6 +43,6 @@ test('user-specified amounts and factual CCTV gaps are not lost',()=>{
  const finance=getDocument(['finance']).body;
  for(const value of ['2시간 이상','3시간 이상','3,000원','10,000원','월 1회','200,000원','하이패스','여행자보험','자동차보험'])assert.ok(finance.includes(value),value);
  const room=getDocument(['clubroom']).body;assert.match(room,/운영진의 사전 승인/);
- const cctv=getDocument(['cctv']).body;for(const value of ['윤민기','rcyindcu@gmail.com','동아리방 내부 1개','xizomi','1년','미기재','영상과 함께 음성 수집'])assert.ok(cctv.includes(value),value);
+ const cctv=getDocument(['cctv']).body;for(const value of ['윤민기','rcyindcu@gmail.com','동아리방 내부 1개','Xiaomi Home','1년','미기재','영상과 함께 음성 수집'])assert.ok(cctv.includes(value),value);
  assert.match(getDocument(['media']).body,/적용 보류/);
 });

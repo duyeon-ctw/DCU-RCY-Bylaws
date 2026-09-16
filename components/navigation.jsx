@@ -2,9 +2,34 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-export default function Navigation({documents}){
- const pathname=usePathname();const panel=useRef(null);const groups=[...new Set(documents.map(doc=>doc.group))];
- function closeOnMobile(){if(window.matchMedia('(max-width: 1023px)').matches&&panel.current)panel.current.open=false;}
- useEffect(()=>{const query=window.matchMedia('(min-width: 1024px)');const resize=()=>{if(panel.current)panel.current.open=query.matches;};resize();query.addEventListener('change',resize);return()=>query.removeEventListener('change',resize);},[]);
- return <details ref={panel} className="sidebar" open><summary>차례</summary><nav aria-label="문서 탐색"><Link href="/" onClick={closeOnMobile} aria-current={pathname==='/'?'page':undefined}>전체 문서</Link>{groups.map(group=><section key={group}><h2>{group}</h2>{documents.filter(doc=>doc.group===group).map(doc=><Link key={doc.slug} href={doc.href} onClick={closeOnMobile} aria-current={pathname===doc.href||pathname+'/'===doc.href?'page':undefined}>{doc.title}</Link>)}</section>)}</nav></details>;
+
+export default function Navigation({ documents }) {
+  const pathname = usePathname();
+  const panel = useRef(null);
+  useEffect(() => {
+    const header = panel.current?.closest('header');
+    if (!header) return;
+    const measure = () => document.documentElement.style.setProperty('--head', `${header.getBoundingClientRect().height}px`);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const current = panel.current?.querySelector('[aria-current="page"]');
+    if (current && panel.current) {
+      const nav = panel.current;
+      nav.scrollLeft = Math.max(0, current.offsetLeft - nav.offsetLeft - (nav.clientWidth - current.offsetWidth) / 2);
+    }
+  }, [pathname]);
+  return (
+    <nav ref={panel} className="top-navigation" aria-label="문서 메뉴">
+      <Link href="/" aria-current={pathname === '/' ? 'page' : undefined}>문서 홈</Link>
+      {documents.map(doc => (
+        <Link key={doc.slug} href={doc.href} aria-current={pathname.replace(/\/$/, '') === doc.href.replace(/\/$/, '') ? 'page' : undefined}>
+          {doc.title}
+        </Link>
+      ))}
+    </nav>
+  );
 }
