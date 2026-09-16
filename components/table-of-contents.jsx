@@ -69,6 +69,13 @@ export default function TableOfContents({ entries, title }) {
       return next;
     });
   }
+  function setAll(event, open) {
+    // These buttons act on chapters without toggling the surrounding summary.
+    event.preventDefault();
+    event.stopPropagation();
+    if (panel.current) panel.current.open = true;
+    setExpanded(new Set(open ? groups.filter(group => group.children.length).map(group => group.id) : []));
+  }
   function entryLink(entry, className) {
     return <a key={entry.id} href={`#${entry.id}`} className={className}
       aria-current={active === entry.id ? 'location' : undefined} onClick={() => setActive(entry.id)}>{entry.title}</a>;
@@ -77,13 +84,22 @@ export default function TableOfContents({ entries, title }) {
   const expandable = groups.filter(group => group.children.length);
   return (
     <details className="toc-panel" ref={panel} open>
-      <summary>차례 <span>{entries.length}개 항목</span></summary>
-      <p className="toc-document-title">{title}</p>
-      {expandable.length > 0 && <div className="toc-tools" aria-label="차례 펼침 설정">
-        <button type="button" onClick={() => setExpanded(new Set(expandable.map(group => group.id)))}>모두 펼치기</button>
-        <button type="button" onClick={() => setExpanded(new Set())}>모두 접기</button>
-      </div>}
-      <nav aria-label="현재 문서 차례">
+      <summary className="toc-heading">
+        <span className="toc-heading-label">
+          <svg className="toc-panel-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="m7 4 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          차례
+        </span>
+        {expandable.length > 0 && <span className="toc-tools" role="group" aria-label="차례 펼침 설정">
+          <button type="button" className="toc-icon-button" aria-label="모두 펼치기" title="모두 펼치기" aria-controls="document-outline" onClick={event => setAll(event, true)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m7 8 5-5 5 5M7 16l5 5 5-5" /></svg>
+          </button>
+          <button type="button" className="toc-icon-button" aria-label="모두 접기" title="모두 접기" aria-controls="document-outline" onClick={event => setAll(event, false)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m7 3 5 5 5-5M7 21l5-5 5 5" /></svg>
+          </button>
+        </span>}
+      </summary>
+      <p className="toc-document-title">{title}<span className="toc-total"> · {entries.length}개 항목</span></p>
+      <nav id="document-outline" aria-label="현재 문서 차례">
         {groups.map(group => group.children.length ? (
           <details key={group.id} className={`toc-chapter${activeGroup === group.id ? ' is-current' : ''}`}
             open={expanded.has(group.id)} onToggle={event => setGroup(group.id, event.currentTarget.open)}>

@@ -24,10 +24,23 @@ script = r'''<script>
   const chapters = document.querySelectorAll('.toc-chapter');
   check(chapters.length === 10, 'Expected nine chapters and supplementary provisions');
   const mobile = matchMedia('(max-width: 1023px)').matches;
-  if (mobile) { check(!panel.open, 'Mobile contents should initially be collapsed'); panel.open = true; }
-  document.querySelector('.toc-tools button:first-child').click(); await wait(200);
+  if (mobile) check(!panel.open, 'Mobile contents should initially be collapsed');
+  const heading = panel.querySelector(':scope > summary');
+  const label = heading.querySelector('.toc-heading-label');
+  const actions = Array.from(heading.querySelectorAll('.toc-tools button'));
+  check(actions.length === 2, 'Expand and collapse icons must be in the contents heading');
+  check(actions.every(button => button.querySelector('svg') && !button.textContent.trim() && button.getAttribute('aria-label') && button.title), 'Icons must have accessible labels and tooltips');
+  const labelBox = label.getBoundingClientRect();
+  const firstBox = actions[0].getBoundingClientRect();
+  const lastBox = actions[1].getBoundingClientRect();
+  check(firstBox.width > 0 && firstBox.left >= labelBox.right, 'Contents icons must remain visible beside the label');
+  check(Math.abs(firstBox.top + firstBox.height / 2 - labelBox.top - labelBox.height / 2) < 4, 'Contents label and icons must share one row');
+  check(lastBox.right <= heading.getBoundingClientRect().right + 1, 'Contents toolbar overflows its heading');
+  actions[0].click(); await wait(200);
+  check(panel.open, 'Expand action should reveal the contents panel');
   check(document.querySelectorAll('.toc-chapter[open]').length === chapters.length, 'Expand all failed');
-  document.querySelector('.toc-tools button:last-child').click(); await wait(250);
+  actions[1].click(); await wait(250);
+  check(panel.open, 'Collapse all must not close the contents heading');
   check(document.querySelectorAll('.toc-chapter[open]').length === 0, 'Collapse all failed');
   chapters[0].querySelector('summary').click(); await wait(250);
   check(document.querySelectorAll('.toc-chapter[open]').length === 1, 'Single chapter toggle failed');
@@ -40,7 +53,7 @@ script = r'''<script>
   check(!document.querySelector('#document-content').innerText.includes('**'), 'Literal Markdown stars remain');
   check(Array.from(document.querySelectorAll('.art-title')).every(node => !/^\s*[(（]/.test(node.textContent)), 'Article title parentheses remain');
   if (mobile) { panel.open = false; check(document.documentElement.scrollWidth <= innerWidth, 'Mobile page overflows horizontally'); }
-  finish('passed', JSON.stringify({chapters:chapters.length, mobile, theme:true, accordion:true, typography:true}));
+  finish('passed', JSON.stringify({chapters:chapters.length, mobile, theme:true, accordion:true, typography:true, headingIcons:true}));
  } catch (error) { finish('failed', String(error.stack || error)); }
 })();
 </script>'''
