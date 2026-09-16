@@ -40,6 +40,8 @@ jobs:
         run: npm run build
       - name: Check exported document bodies and assets
         run: npm run verify:export
+      - name: Test chapter controls and icons in desktop and mobile Chrome
+        run: bash scripts/check-browser.sh
       - name: Persist initial Markdown sources and dependency lock
         if: github.event_name != 'pull_request'
         env:
@@ -71,6 +73,7 @@ jobs:
             out/
             content/
             package-lock.json
+            qa/browser/
           include-hidden-files: true
           retention-days: 7
       - name: Upload Pages artifact
