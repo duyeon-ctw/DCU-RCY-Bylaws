@@ -1,0 +1,23 @@
+title: 대구가톨릭대학교 RCY 규정·정책
+url: https://bylaws.dcu.rcy.kr
+baseurl: ''
+lang: ko
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+permalink: pretty
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - tools
+  - vendor
+defaults:
+  - scope:
+      path: ''
+    values:
+      layout: document
+      version: '2026.09 · 검토판'
+      status: '검토안 · 시행 전'

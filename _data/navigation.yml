@@ -1,0 +1,42 @@
+- title: 문서 홈
+  url: /
+  group: 안내
+- title: 규정집 안내
+  url: /regulations/
+  group: 규정
+- title: 회칙
+  url: /bylaws/
+  group: 규정
+- title: 재무 규정
+  url: /finance/
+  group: 규정
+- title: 재무 감사 시행세칙
+  url: /audit/
+  group: 규정
+- title: 임원 선발 규정
+  url: /recruitment/
+  group: 규정
+- title: 동아리방 이용 규정
+  url: /clubroom/
+  group: 규정
+- title: 개인정보 처리방침
+  url: /privacy/
+  group: 정책
+- title: 서비스 이용약관
+  url: /terms/
+  group: 정책
+- title: 개인정보 동의서
+  url: /consent/
+  group: 서식
+- title: 촬영·초상 이용 동의
+  url: /media/
+  group: 서식
+- title: CCTV 운영·관리 방침
+  url: /cctv/
+  group: 정책
+- title: 검토 사항·개정 이력
+  url: /reviews/
+  group: 관리
+- title: 원문·법령 출처
+  url: /references/
+  group: 관리

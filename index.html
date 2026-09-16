@@ -1,56 +1,25 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>대구가톨릭대학교 RCY 규정</title>
-<meta name="description" content="대구가톨릭대학교 RCY의 회칙과 운영 규정을 공개합니다.">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="index.html"><span class="brand-mark">RCY</span><span>대구가톨릭대학교 RCY 규정</span></a>
-    <nav aria-label="주요 문서">
-      <a href="bylaws.html">회칙</a>
-      <a href="finance.html">재무규정</a>
-      <a href="clubroom.html">동아리방 규정</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="hero">
-    <div class="container">
-      <div class="eyebrow">DCU RCY · Regulations</div>
-      <h1>운영 규정과 회칙을<br>한곳에서 확인하세요.</h1>
-      <p class="lead">회칙, 재무규정, 동아리방 이용 규정 등 RCY 운영에 필요한 문서를 공개하고 변경 이력을 투명하게 관리하기 위한 정적 문서 사이트입니다.</p>
-      <span class="status">현재 일부 문서는 확정 원문 등록이 필요합니다.</span>
-      <div class="grid">
-        <a class="card" href="bylaws.html">
-          <span class="badge draft">원문 등록 필요</span>
-          <h2>RCY 회칙</h2>
-          <p>조직, 회원, 임원, 의결, 활동 및 징계 등 동아리 운영의 기본 규범.</p>
-        </a>
-        <a class="card" href="finance.html">
-          <span class="badge draft">원문 등록 필요</span>
-          <h2>재무규정</h2>
-          <p>회비, 지출, 증빙, 결산, 환불 및 재무 공개에 관한 세부 규정.</p>
-        </a>
-        <a class="card" href="clubroom.html">
-          <span class="badge live">초안 원문 반영</span>
-          <h2>동아리방 이용 규정</h2>
-          <p>출입, 공동 이용, 청결, 비품, 금지행위, CCTV 및 퇴실 점검 기준.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container">
-    대구가톨릭대학교 RCY · 문서 변경 사항은 Git 이력으로 관리하는 것을 권장합니다.
-  </div>
-</footer>
-
-</body></html>
+---
+layout: document
+kind: home
+title: 함께 지키는 기준,<br>투명하게 공개하는 운영.
+description: 회칙부터 개인정보 보호까지, 대구가톨릭대학교 RCY의 운영 기준을 한곳에서 확인하세요.
+category: REGULATIONS & POLICIES
+status: 원문 수록 · 신규 문서 검토안
+version: '문서 사이트 v3.0 · 2026.09.16'
+---
+<div class="home-intro"><b>원문과 새 제안을 구분합니다.</b><p>첨부된 제규정집 v2.2의 회칙·재무·감사·선발 조문은 본문을 보존하여 수록했습니다. 개인정보 처리방침과 신규 약관·동의서·CCTV 방침은 운영 확인 및 의결 전 검토안입니다.</p><p>원문의 제정일이 미기재되어 있으므로, 이 사이트의 공개만으로 어떤 문서도 시행된 것으로 보지 않습니다. <a href="{{ '/reviews/' | relative_url }}">확정이 필요한 내용 확인하기 →</a></p></div>
+<label for="doc-search" class="search-label" hidden>문서 찾기 · 제목과 설명에서 검색</label><input id="doc-search" class="search-input" type="search" placeholder="회비, 개인정보, CCTV, 선발…" autocomplete="off" hidden>
+<div class="cards">
+<a class="doc-card" href="{{ '/bylaws/' | relative_url }}"><small>01 / 원문 수록</small><h2>회칙</h2><p>회원의 권리·의무, 총회와 임원, 직무대행, 회계, 상벌과 회칙 개정.</p><span>43개 조문 + 부칙 →</span></a>
+<a class="doc-card" href="{{ '/finance/' | relative_url }}"><small>02 / 원문 수록</small><h2>재무 규정</h2><p>회비·갹출금·환불, 예산, 전결 한도, 3인 서명, 증빙과 결산.</p><span>24개 조문 + 제14조의2 →</span></a>
+<a class="doc-card" href="{{ '/audit/' | relative_url }}"><small>03 / 원문 수록</small><h2>재무 감사 시행세칙</h2><p>감사인 선임, 잔액 대조, 표본 검증, 보고서와 불일치 처리.</p><span>6개 조문 + 보고서 서식 →</span></a>
+<a class="doc-card" href="{{ '/recruitment/' | relative_url }}"><small>04 / 원문 수록</small><h2>임원 선발 규정</h2><p>공고, 지원서, 면접 기준, 통보, 인수인계와 이의 신청.</p><span>9개 조문 + 일정표 →</span></a>
+<a class="doc-card" href="{{ '/clubroom/' | relative_url }}"><small>05 / 기존 초안 + 운영 부록</small><h2>동아리방 이용 규정</h2><p>출입과 공동 이용, 청결, 비품, 금지행위, CCTV와 퇴실 점검.</p><span>8개 조문 + 상세 운영안 →</span></a>
+<a class="doc-card" href="{{ '/privacy/' | relative_url }}"><small>06 / 개정 검토안</small><h2>개인정보 처리방침</h2><p>처리 목적·항목·보유기간, 제3자 제공, 위탁·국외이전, 파기와 권리 행사.</p><span>상세 처리 기준과 미확정 항목 →</span></a>
+<a class="doc-card" href="{{ '/terms/' | relative_url }}"><small>07 / 신규 검토안</small><h2>서비스 이용약관</h2><p>계정, 활동 신청·출석, 포인트, 게시물, 이용 제한과 분쟁 처리.</p><span>서비스 운영 기본 약속 →</span></a>
+<a class="doc-card" href="{{ '/consent/' | relative_url }}"><small>08 / 신규 서식안</small><h2>개인정보 동의서</h2><p>회원 가입 A, 행사·건강정보 B, 회계 정산 C와 제3자 제공·국외이전 서식.</p><span>목적별 독립 동의·거부 선택 →</span></a>
+<a class="doc-card" href="{{ '/media/' | relative_url }}"><small>09 / 신규 서식안</small><h2>촬영·초상 이용 동의</h2><p>촬영, 내부 공유, 공개 홍보를 구분하고 철회·삭제 절차를 안내합니다.</p><span>동의서 + 게시 전 확인 절차 →</span></a>
+<a class="doc-card" href="{{ '/cctv/' | relative_url }}"><small>10 / 신규 검토안</small><h2>CCTV 운영·관리 방침</h2><p>설치 근거, 촬영 범위, 보유기간, 권한, 열람·반출과 안내판.</p><span>장비·책임자 확인표 포함 →</span></a>
+<a class="doc-card" href="{{ '/regulations/' | relative_url }}"><small>11 / 원문 안내</small><h2>규정집 안내</h2><p>규범 위계, 업무별 규정 라우팅, 원문 구성과 문서 간 관계.</p><span>원문 v2.2 사용 안내 →</span></a>
+<a class="doc-card" href="{{ '/reviews/' | relative_url }}"><small>12 / 검토 기록</small><h2>검토 사항·개정 이력</h2><p>미확정 연락처, 시행일, 원문 간 충돌과 개인정보 보완 사항.</p><span>정식 시행 전 확인하기 →</span></a>
+</div><p id="search-empty" hidden>해당 문서가 없습니다. 다른 검색어를 입력해 주세요.</p>
