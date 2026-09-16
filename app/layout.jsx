@@ -5,14 +5,14 @@ import Navigation from '../components/navigation';
 import { Controls, FloatingPrintButton } from '../components/controls';
 import './globals.css';
 import './reading-layout.css';
+import './member-reading.css';
 
 export const metadata = {
   metadataBase: new URL(site.url),
   title: { default: site.title, template: `%s | ${site.title}` },
-  description: '대구가톨릭대학교 RCY 회칙, 재무 규정 및 개인정보 보호 문서.',
+  description: '대구가톨릭대학교 RCY 회원을 위한 회칙, 운영 규정 및 개인정보 안내.',
   robots: { index: false, follow: true },
 };
-
 export default function RootLayout({ children }) {
   const navigation = navigationData(getDocuments()).map(({ text, ...doc }) => doc);
   return (
@@ -36,8 +36,9 @@ export default function RootLayout({ children }) {
           {children}
           <footer className="footer">
             <strong>{site.name}</strong>
-            <p><Link href="/privacy/">개인정보 처리방침</Link> · <Link href="/terms/">이용약관</Link> · <Link href="/cctv/">CCTV 운영·관리 방침</Link></p>
-            <p>규정의 시행일과 개정 작성일은 구분합니다. 적용 보류 항목은 각 문서의 안내를 확인하세요.<br />회원정보·서명된 동의서·계좌 내역은 공개 저장소에 올리지 않습니다.</p>
+            <p><Link href="/privacy/">개인정보 처리방침</Link> · <Link href="/consent/">가입 동의 안내</Link> · <Link href="/cctv/">CCTV 운영·관리 방침</Link></p>
+            <p>개인정보·동의 내역 확인 및 권리 행사: 윤민기 / <a href="mailto:rcyindcu@gmail.com">rcyindcu@gmail.com</a></p>
+            <p>회원의 개인정보와 개별 동의 내역은 이 사이트에 공개하지 않습니다.</p>
           </footer>
         </main>
         <FloatingPrintButton />

@@ -1,0 +1,39 @@
+/* Member-facing controls and chapter outline; the original regulation layout remains. */
+.controls .icon-button{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;min-height:40px;padding:0;border-radius:10px}
+.controls .icon-button svg{width:19px;height:19px;flex:none}
+.controls .icon-button[data-copied=true]{color:var(--accent);border-color:var(--accent)}
+.toc-tools{display:flex;gap:6px;padding:0 7px 10px}
+.toc-tools button{flex:1;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--muted);font-size:11px;min-height:32px;padding:5px 7px}
+.toc-tools button:hover{color:var(--ink);background:var(--active)}
+.toc-panel nav{max-height:calc(100dvh - var(--head) - 190px);padding:0 3px 8px}
+.toc-chapter{border-bottom:1px solid var(--line);padding:3px 0}
+.toc-chapter:last-child{border-bottom:0}
+.toc-chapter>summary{list-style:none;display:flex;align-items:center;gap:7px;min-height:44px;padding:9px 7px;border-radius:8px;color:var(--ink);font-size:13px;line-height:1.55;font-weight:700}
+.toc-chapter>summary::-webkit-details-marker{display:none}
+.toc-chapter>summary:hover{background:var(--active)}
+.toc-chevron{width:15px;height:15px;flex:none;transition:transform .15s}
+.toc-chapter[open]>summary .toc-chevron{transform:rotate(90deg)}
+.toc-chapter.is-current>summary{color:var(--accent)}
+.toc-chapter-title{flex:1;min-width:0}
+.toc-count{font-size:10px;font-weight:500;border:1px solid var(--line);border-radius:6px;min-width:20px;padding:1px 4px;text-align:center;color:var(--muted);background:var(--surface)}
+.toc-children{margin:0 0 7px 14px;border-left:1px solid var(--line);padding-left:6px}
+.toc-panel nav .toc-children a{font-size:12px;line-height:1.7;padding:8px 10px;margin:2px 0}
+.toc-panel nav .toc-children a.toc-chapter-start{font-size:11px;color:var(--muted);padding-top:4px;padding-bottom:5px}
+.toc-panel nav .toc-standalone{font-size:12.5px;min-height:40px;display:flex;align-items:center;margin:3px 0}
+.toc-panel nav a[aria-current=location]{background:var(--soft);color:var(--accent);font-weight:750}
+.toc-panel>summary{font-size:15px}
+.toc-document-title{font-size:12px;line-height:1.6;margin-top:12px;margin-bottom:12px}
+@media screen{
+  .prose p,.prose li{line-height:1.9}
+  .prose .art{margin:16px 0;padding:18px 22px 16px}
+  .prose .art-h{align-items:baseline;margin-bottom:12px;gap:11px}
+  .prose .art-title{font-size:17px;line-height:1.6}
+  .prose h2:not(.art-h){margin-top:42px;margin-bottom:18px;font-size:21px}
+  .prose li+li{margin-top:7px}
+  .prose th,.prose td{line-height:1.8}
+  .document-header .lead{max-width:1000px}
+}
+@media screen and (max-width:1023px){.toc-panel nav{max-height:340px}.toc-tools{max-width:300px;padding-left:0}.toc-chapter>summary{min-height:46px}.toc-panel nav .toc-children a{min-height:40px}.toc-panel>summary{min-height:28px}}
+@media screen and (max-width:640px){.controls .icon-button{width:38px;height:38px;min-height:38px}.controls .icon-button svg{width:18px;height:18px}.prose .art{padding:16px 14px;margin:14px 0}.prose .art-title{font-size:16px}.prose h2:not(.art-h){font-size:20px}.prose .art-h{gap:9px}.toc-panel nav{max-height:320px}}
+@media print{.toc-tools,.toc-chapter{display:none!important}}
+@media(prefers-reduced-motion:reduce){.toc-chevron{transition:none}}

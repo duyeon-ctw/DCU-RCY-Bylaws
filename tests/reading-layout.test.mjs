@@ -5,7 +5,8 @@ import { getDocument } from '../lib/documents.mjs';
 
 test('financial disclosure and semester review match the requested amendment', () => {
   const body = getDocument(['finance']).body;
-  const article = body.split('### 제21조(보고와 결산)')[1].split('### 제22조')[0];
+  const article = body.match(/^### 제21조[^\n]*\n([\s\S]*?)(?=^### 제22조)/m)?.[1];
+  assert.ok(article, 'Missing financial reporting article');
   for (const value of ['홈페이지의 회계 페이지', '종강 2주 이내', '재무부장, 부회장, 회장']) assert.ok(article.includes(value), value);
   assert.doesNotMatch(article, /3줄 공지/);
 });

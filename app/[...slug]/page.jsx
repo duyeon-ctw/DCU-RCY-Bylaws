@@ -20,7 +20,7 @@ export default async function DocumentPage({ params }) {
   return (
     <div className="document-layout">
       <AnchorCompatibility aliases={doc.aliases} />
-      <TableOfContents entries={doc.toc} title={doc.title} />
+      <TableOfContents entries={doc.toc} title={doc.title} key={doc.slug} />
       <div className="document-main">
         <header className="document-header">
           <p className="eyebrow">DCU RCY / {doc.group || 'DOCUMENTS'}</p>
@@ -28,17 +28,13 @@ export default async function DocumentPage({ params }) {
           <p className="lead">{doc.description}</p>
           <div className="metadata">
             <span>{doc.version}</span>
-            {doc.effective_date && (
-              <span>{doc.source_type === 'supplement' ? '지정 시행일' : '시행일'} <time dateTime={doc.effective_date}>{formatDate(doc.effective_date)}</time></span>
-            )}
+            {doc.effective_date && <span>시행일 <time dateTime={doc.effective_date}>{formatDate(doc.effective_date)}</time></span>}
             <span className="status">{doc.status}</span>
-            {doc.updated_date && <span>개정 작성일 <time dateTime={doc.updated_date}>{formatDate(doc.updated_date)}</time></span>}
+            {doc.updated_date && <span>문서 수정일 <time dateTime={doc.updated_date}>{formatDate(doc.updated_date)}</time></span>}
           </div>
           <p className="print-origin">대구가톨릭대학교 RCY · {site.url}{doc.href}</p>
         </header>
-        {doc.source_type === 'supplement' && (
-          <div className="notice">이 문서는 보충 작성안입니다. 미기재 사항과 적용 보류 항목은 확인·고지 절차를 거치기 전 적용하지 않습니다.</div>
-        )}
+        {doc.member_notice && <div className="notice">{doc.member_notice}</div>}
         <div className="reading">
           <article className="prose" id="document-content" dangerouslySetInnerHTML={{ __html: doc.html }} />
         </div>
