@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "source_commit": "7e61749e5c7091234ac1060376ea60645f3d0a18",
+  "effective_date": "2026-09-01",
+  "documents": [
+    {
+      "slug": "bylaws",
+      "source": "bylaws/index.html",
+      "source_sha256": "d224f98c3c55a1687a6dc62b22db55fc08443339abecd730d37e48c31842e078",
+      "markdown_sha256": "8d20f266294686aefd7b0cbe22b6f41463a21b8e8e62f57c242cdebbc46dcb59",
+      "html_conversion_text_check": true
+    },
+    {
+      "slug": "finance",
+      "source": "finance/index.html",
+      "source_sha256": "d295a05ad04222005b57d872ac60169bbfcf44d198b579dbdd161544736011d0",
+      "markdown_sha256": "6973b441b06b14837522ba73e0b8f74f588e2b500d962689aa7e30567b5766ac",
+      "html_conversion_text_check": true
+    },
+    {
+      "slug": "audit",
+      "source": "audit/index.html",
+      "source_sha256": "01516434f468a0d9f3083144f777ec011185796374f847c66375e86fa24ee658",
+      "markdown_sha256": "6789cd351a1efe16651890918d5d797a0f9bf3a2d0e7b55dc849852934ccd0ca",
+      "html_conversion_text_check": true
+    },
+    {
+      "slug": "recruitment",
+      "source": "recruitment/index.html",
+      "source_sha256": "3eeee7f8093e2ea66333abac3c5a30a08f3bf46dca71b757cf53f12239fb6daf",
+      "markdown_sha256": "8d16ce00457948e10c2e2527f0c9ae3e957a9e44b0888b62de8b8c60e9642d48",
+      "html_conversion_text_check": true
+    },
+    {
+      "slug": "clubroom",
+      "source": "clubroom/index.md",
+      "source_sha256": "b23734cf6b9daff91f335c0c935c7d3c793b29d870f7ad80684a27d7895f572d",
+      "markdown_sha256": "e3d451d6188640072506257cab65272688652feb5486af6d86f84feb6559f150",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "privacy",
+      "source": "privacy/index.md",
+      "source_sha256": "3f05a284bbb3eb0e0b9f41a81de1afa1af1a785354b3d1437c51e1329fabefa6",
+      "markdown_sha256": "83b81863a133be8b35e94e633cd69d7345436bcf4522c033d84494b57dda0a1f",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "terms",
+      "source": "terms/index.md",
+      "source_sha256": "479d1d2d0d8d8a32cfbd38937b6e754d922cd7f744e4387e7d90f41dd37b08d4",
+      "markdown_sha256": "ce3eae727d30bcaa5f3bcbde06fdf6369352352aa332ecf9e6c40bedc341afd7",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "consent",
+      "source": "consent/index.md",
+      "source_sha256": "6d2e80106a00f200b0293127685e2e903c1c211aba69d0904fe7c8090759d251",
+      "markdown_sha256": "7b4694f88ce897b9e860d0ce9ecd1494ff19125a600cdd1967b85e6f9afb31e9",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "media",
+      "source": "media/index.md",
+      "source_sha256": "4be4cde175ec550785685e2b418a18455fd6d471354e076bbf48540fce180b02",
+      "markdown_sha256": "980eb90b96a7832634214a0aa59fa199fcd6ea3041c231cc70a0af875213a998",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "cctv",
+      "source": "cctv/index.md",
+      "source_sha256": "9b9258184b0dda50759fb8349bc4faf05bbb37b3167434cbf83cf6af8b90fdd3",
+      "markdown_sha256": "6312fb9eca7335ea4c1fc8d776517ec368c3d8f6b8906c812498dd6f74c85f62",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "regulations",
+      "source": "regulations/index.html",
+      "source_sha256": "c658ad334da610a5708971bfba5a6314922ff70cc48af00475668ebf367c512a",
+      "markdown_sha256": "35632b6a49f0f6bbbbdeb6f811e119714f4c4731595e873fe1212724ab368802",
+      "html_conversion_text_check": true
+    },
+    {
+      "slug": "publication",
+      "source": "publication/index.md",
+      "source_sha256": "fce6612820f6f96744d0345b1785ac465acad3f3185b8f1acda91d09354010d1",
+      "markdown_sha256": "a31f050e6426e5b8f66dc99c54e4faab1065f636fc0624db429301818af3776a",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "reviews",
+      "source": "reviews/index.md",
+      "source_sha256": "78df6f76fda3a3a29a428c567ce4af2134c65591c7bbbc18fda45e3aa0477844",
+      "markdown_sha256": "585595972c2bf1da8bf1b06caf4cd6fdaad243a1c8bf61b573e81ec513bc7575",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "references",
+      "source": "references/index.md",
+      "source_sha256": "646b84d3b27c16ad5cb56d8222fab917cf7a8b88c08f9184455314b6b3e062e2",
+      "markdown_sha256": "1124d6ad5dfd29369ab4d4537de5d5da06fceba86e12f73cc6897df14cb9d949",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "privacy/source",
+      "source": "privacy/source/index.html",
+      "source_sha256": "e431e2ce6459c2b1c90339479a4b753e46620198722191402c978e57ecf0e8a3",
+      "markdown_sha256": "ea4a1e7be45ea82506f2982eb3da8ff2202440f4528bb757b31844023f142740",
+      "html_conversion_text_check": false
+    },
+    {
+      "slug": "privacy/proposal",
+      "source": "privacy/proposal/index.md",
+      "source_sha256": "330ebc567b0364dca88b68a6e06e392ced35086600ef5fc26a1a8b6db38a5e64",
+      "markdown_sha256": "5ef0fe4edf6188890e8f3bcf282aa347568e8ba7ad412ed712df2e943656a455",
+      "html_conversion_text_check": false
+    }
+  ]
+}
