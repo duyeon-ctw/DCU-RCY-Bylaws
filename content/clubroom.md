@@ -3,7 +3,7 @@ title: "동아리방 이용 규정"
 description: "회원과 사전 승인 방문자의 출입, 공간 예약, 비품 관리, CCTV와 퇴실 점검 기준."
 category: "REGULATIONS / CLUBROOM"
 status: "회원 안내"
-version: "v1.3"
+version: "v1.4"
 order: 5
 group: "규정"
 source_type: "source"
@@ -40,7 +40,7 @@ audience: "members"
 
 안전 및 도난 예방을 위해 CCTV가 작동 중이며, 담당 임원진이 필요한 경우에만 영상을 확인한다. 목적 외 이용과 무단 공유를 금지한다.
 
-운영 주체는 RCY 동아리이며, 관리책임자는 **윤민기**, CCTV 문의 연락처는 **rcyindcu@gmail.com**이다. 카메라·음성·보유기간·국외이전의 운영자 제공 현황과 확인 사항은 [CCTV 운영·관리 방침](/cctv/)에 따른다. 행사 출입 승인이나 동아리 가입은 CCTV 녹음·얼굴인식·국외이전에 대한 동의를 자동으로 뜻하지 않는다.
+운영 주체는 RCY 동아리이며, 관리책임자는 **윤민기**, CCTV 문의 연락처는 **rcyindcu@gmail.com**이다. 카메라·음성·보유기간·국외이전의 운영자 제공 현황과 확인 사항은 [CCTV 운영·관리 방침](/cctv/)에 따른다.
 
 <h2 id="a7">제7조 퇴실 점검</h2>
 
